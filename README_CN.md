@@ -1,7 +1,7 @@
 ![mcversion](https://img.shields.io/badge/Minecraft-1.12.2-blue)
 ![forgeversion](https://img.shields.io/badge/Minecraft--forge-14.23.5.2855-orange)
 ![javaversion](https://img.shields.io/badge/Java-1.8-orange)
-![version](https://img.shields.io/badge/Java-1.8-orange)
+![version](https://img.shields.io/badge/ToggleLib-1.0a-red)
 ![GitHub all releases](https://img.shields.io/github/downloads/PixCraft-MC/ToggleLib/total)
 
 # ToggleLib | 手柄依赖库
