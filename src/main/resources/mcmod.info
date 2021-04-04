@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "ToggleLib",
+    "name": "ToggleLib",
+    "description": "SanYing DenSha Toggle Lib for MC",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Pixmeow",
+      "PixCraft"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
