@@ -1,7 +1,6 @@
-package com.pixmeow.mc.mod.togglelib.io;
+package com.pixmeow.mc.mod.togglelib.protocol;
 
-import com.pixmeow.mc.mod.togglelib.Reference;
-import com.pixmeow.mc.mod.togglelib.toggle.SanYing;
+import com.pixmeow.mc.mod.togglelib.brand.SanYing;
 import net.java.games.input.*;
 
 import java.util.LinkedHashMap;
@@ -26,6 +25,8 @@ public class SanYingToggle {
     }
 
     public static void main(String[] args) {
+        System.out.printf("============ ToggleLib ============\nToggle Name: %s\nToggle Protocol Version: %d\nScript Author: %s\n", SanYing.name, SanYing.version, SanYing.author);
+
         boolean run = true;
         while (run) {
             if (toggle == null) {
