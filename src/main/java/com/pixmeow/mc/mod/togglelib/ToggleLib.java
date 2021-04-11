@@ -13,9 +13,11 @@ public class ToggleLib {
     @Mod.Instance(Reference.MOD_ID)
     public static ToggleLib INSTANCE;
     public static final EventBus Toggle_EVENT_BUS = new EventBus();
+    public Config config;
 
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
+        config = new Config(event);
         ToggleThreadManager.StartSanYing();
     }
 
