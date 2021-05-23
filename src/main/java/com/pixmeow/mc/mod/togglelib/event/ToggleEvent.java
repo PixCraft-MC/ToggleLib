@@ -9,61 +9,17 @@ import java.util.Objects;
 
 @Cancelable
 public class ToggleEvent extends Event {
-    public enum Comp{
-        Handler,
-        Button,
-        Switch,
-        Other
-    }
-
     private final SanYing.ToggleStatus status;
     private final Comp comp;
     private final Component component;
-
-    public SanYing.ToggleStatus getStatus() {
-        return status;
-    }
-
     public ToggleEvent(SanYing.ToggleStatus status, Comp comp, Component component) {
         this.status = status;
         this.comp = comp;
         this.component = component;
     }
 
-    public static class HandlerEvent extends ToggleEvent{
-        public HandlerEvent(SanYing.ToggleStatus status, Comp comp, Component.Handler handler) {
-            super(status, comp, handler);
-        }
-    }
-
-    public static class ButtonEvent extends ToggleEvent{
-        public ButtonEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-            super(status, comp, button);
-        }
-
-        public static class ATSConfirmedEvent extends ButtonEvent{
-            public ATSConfirmedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp, button);
-            }
-        }
-
-        public static class HornEvent extends ButtonEvent{
-            public HornEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp,  button);
-            }
-        }
-
-        public static class ConstSpeedEvent extends ButtonEvent{
-            public ConstSpeedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp, button);
-            }
-        }
-    }
-
-    public static class SwitchEvent extends ToggleEvent{
-        public SwitchEvent(SanYing.ToggleStatus status, Comp comp, Component.Switch aSwitch) {
-            super(status, comp, aSwitch);
-        }
+    public SanYing.ToggleStatus getStatus() {
+        return status;
     }
 
     @Override
@@ -77,6 +33,49 @@ public class ToggleEvent extends Event {
     @Override
     public int hashCode() {
         return Objects.hash(status, comp, component);
+    }
+
+    public enum Comp {
+        Handler,
+        Button,
+        Switch,
+        Other
+    }
+
+    public static class HandlerEvent extends ToggleEvent {
+        public HandlerEvent(SanYing.ToggleStatus status, Comp comp, Component.Handler handler) {
+            super(status, comp, handler);
+        }
+    }
+
+    public static class ButtonEvent extends ToggleEvent {
+        public ButtonEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
+            super(status, comp, button);
+        }
+
+        public static class ATSConfirmedEvent extends ButtonEvent {
+            public ATSConfirmedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
+                super(status, comp, button);
+            }
+        }
+
+        public static class HornEvent extends ButtonEvent {
+            public HornEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
+                super(status, comp, button);
+            }
+        }
+
+        public static class ConstSpeedEvent extends ButtonEvent {
+            public ConstSpeedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
+                super(status, comp, button);
+            }
+        }
+    }
+
+    public static class SwitchEvent extends ToggleEvent {
+        public SwitchEvent(SanYing.ToggleStatus status, Comp comp, Component.Switch aSwitch) {
+            super(status, comp, aSwitch);
+        }
     }
 }
 
