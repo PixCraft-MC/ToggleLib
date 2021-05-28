@@ -30,6 +30,7 @@ public class Component {
         net.java.games.input.Component ket7;
         net.java.games.input.Component ket8;
         net.java.games.input.Component ket9;
+
         public Handler(SanYing.ToggleStatus status) {
             super(status);
         }

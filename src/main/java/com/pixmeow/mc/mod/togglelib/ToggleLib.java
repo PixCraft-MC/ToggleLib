@@ -1,22 +1,18 @@
 package com.pixmeow.mc.mod.togglelib;
 
 import com.pixmeow.mc.mod.togglelib.event.EventManager;
-import com.pixmeow.mc.mod.togglelib.ui.GuiInstance;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class ToggleLib {
+    public static final EventBus Toggle_EVENT_BUS = new EventBus();
     @Mod.Instance(Reference.MOD_ID)
     public static ToggleLib INSTANCE;
-    public static final EventBus Toggle_EVENT_BUS = new EventBus();
     public Config config;
 
     @Mod.EventHandler

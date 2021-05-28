@@ -2,13 +2,12 @@ package com.pixmeow.mc.mod.togglelib;
 
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
 import org.apache.logging.log4j.Logger;
 
 public class Config {
+    public static int version;
     private static Configuration config;
     private static Logger logger;
-    public static int version;
 
     public Config(FMLPreInitializationEvent event) {
         logger = event.getModLog();

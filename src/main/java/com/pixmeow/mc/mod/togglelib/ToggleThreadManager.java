@@ -1,7 +1,6 @@
 package com.pixmeow.mc.mod.togglelib;
 
 import com.pixmeow.mc.mod.togglelib.protocol.SanYingToggle;
-import com.pixmeow.mc.mod.togglelib.ui.GuiInstance;
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
 
