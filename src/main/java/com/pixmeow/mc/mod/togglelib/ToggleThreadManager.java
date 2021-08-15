@@ -6,17 +6,36 @@ import net.java.games.input.ControllerEnvironment;
 
 public class ToggleThreadManager {
     static Thread t;
+    private static boolean isToggleEnabled = false;
 
-    public static void StartSanYing() {
-        t = new SanYing(null);
-        t.start();
+    public static void start() {
+        if (t == null){
+            t = new SanYing(null);
+            t.start();
+        }else if (!t.isAlive()){
+            t.stop();
+            t.start();
+        }
+    }
+
+    public static void stop(){
+        if(t != null && t.isAlive()){
+            t.stop();
+            t = null;
+        }
+    }
+
+    public static boolean isIsToggleEnabled() {
+        return isToggleEnabled;
     }
 
     public static void init() {
         Controller[] controllers = ControllerEnvironment.getDefaultEnvironment().getControllers();
         for (Controller c : controllers) {
             if (c.getName().equals(Reference.ToggleID)) {
+                Logger.Info("Found Toggle (SanYingToggle), registing...", "Toggle Controller");
                 SanYingToggle.registerToggle(c);
+                isToggleEnabled = true;
             }
         }
     }
@@ -30,7 +49,6 @@ public class ToggleThreadManager {
 
         @Override
         public void run() {
-            ToggleThreadManager.init();
             SanYingToggle.main(args);
         }
     }

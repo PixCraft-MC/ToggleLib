@@ -10,6 +10,15 @@ buildscript {
 }
 
 apply plugin: 'net.minecraftforge.gradle'
+
+
+repositories {
+    maven{
+        name = 'minecraft-forge-lib'
+        url = 'http://pixmeow.com:8081/repository/minecraft-forge-lib/'
+    }
+}
+
 group = 'com.pixmeow.mc.mod'
 version = '1.0-SNAPSHOT'
 archivesBaseName = 'togglelib'
@@ -70,26 +79,13 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2855'
-
-    // You may put jars on which you depend on in ./libs or you may define them like so..
-    // compile "some.group:artifact:version:classifier"
-    // compile "some.group:artifact:version"
-
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // These dependencies get remapped to your current MCP mappings
-    // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
     implementation "net.java.jinput:jinput:2.0.9"
     implementation 'com.google.code.gson:gson:2.8.6'
+    compile  'jp.ngt:rtm:2.4.22-40'
+    compile  'jp.ngt:ngtlib:2.4.19-35'
+
+    runtime group: 'jp.ngt', name: 'ngtlib', version: '2.4.19-35'
+    runtime group: 'jp.ngt', name: 'rtm', version: '2.4.22-40'
 }
 
 jar {

@@ -9,17 +9,20 @@ import java.util.Objects;
 
 @Cancelable
 public class ToggleEvent extends Event {
-    private final SanYing.ToggleStatus status;
+    public final SanYing.ToggleStatus now;
+    public final SanYing.ToggleStatus from;
     private final Comp comp;
     private final Component component;
-    public ToggleEvent(SanYing.ToggleStatus status, Comp comp, Component component) {
-        this.status = status;
+
+    public ToggleEvent(SanYing.ToggleStatus now, SanYing.ToggleStatus from, Comp comp, Component component) {
+        this.now = now;
+        this.from = from;
         this.comp = comp;
         this.component = component;
     }
 
-    public SanYing.ToggleStatus getStatus() {
-        return status;
+    public SanYing.ToggleStatus getNow() {
+        return now;
     }
 
     @Override
@@ -27,12 +30,12 @@ public class ToggleEvent extends Event {
         if (this == o) return true;
         if (!(o instanceof ToggleEvent)) return false;
         ToggleEvent that = (ToggleEvent) o;
-        return Objects.equals(status, that.status) && comp == that.comp && Objects.equals(component, that.component);
+        return Objects.equals(now, that.now) && comp == that.comp && Objects.equals(component, that.component);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, comp, component);
+        return Objects.hash(now, comp, component);
     }
 
     public enum Comp {
@@ -43,38 +46,38 @@ public class ToggleEvent extends Event {
     }
 
     public static class HandlerEvent extends ToggleEvent {
-        public HandlerEvent(SanYing.ToggleStatus status, Comp comp, Component.Handler handler) {
-            super(status, comp, handler);
+        public HandlerEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Handler handler) {
+            super(status, from, comp, handler);
         }
     }
 
     public static class ButtonEvent extends ToggleEvent {
-        public ButtonEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-            super(status, comp, button);
+        public ButtonEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Button button) {
+            super(status, from, comp, button);
         }
 
         public static class ATSConfirmedEvent extends ButtonEvent {
-            public ATSConfirmedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp, button);
+            public ATSConfirmedEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Button button) {
+                super(status, from, comp, button);
             }
         }
 
         public static class HornEvent extends ButtonEvent {
-            public HornEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp, button);
+            public HornEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Button button) {
+                super(status, from, comp, button);
             }
         }
 
         public static class ConstSpeedEvent extends ButtonEvent {
-            public ConstSpeedEvent(SanYing.ToggleStatus status, Comp comp, Component.Button button) {
-                super(status, comp, button);
+            public ConstSpeedEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Button button) {
+                super(status, from, comp, button);
             }
         }
     }
 
     public static class SwitchEvent extends ToggleEvent {
-        public SwitchEvent(SanYing.ToggleStatus status, Comp comp, Component.Switch aSwitch) {
-            super(status, comp, aSwitch);
+        public SwitchEvent(SanYing.ToggleStatus status, SanYing.ToggleStatus from, Comp comp, Component.Switch aSwitch) {
+            super(status, from, comp, aSwitch);
         }
     }
 }

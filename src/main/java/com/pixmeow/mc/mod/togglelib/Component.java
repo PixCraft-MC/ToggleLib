@@ -54,9 +54,10 @@ public class Component {
 
         public void finish() {
             try {
+                SanYing.ToggleStatus old = status.copy();
                 value = new HandlerData(new float[]{ket6.getPollData(), ket7.getPollData(), ket8.getPollData(), ket9.getPollData()}).getValue();
                 if (status.setLevel(value))
-                    eventBus.post(new ToggleEvent.HandlerEvent(status, ToggleEvent.Comp.Handler, this));
+                    eventBus.post(new ToggleEvent.HandlerEvent(status, old, ToggleEvent.Comp.Handler, this));
             } catch (Exception e) {
                 System.out.println("From Handler Update");
                 e.printStackTrace();
@@ -66,9 +67,10 @@ public class Component {
         public void on(net.java.games.input.Component component) {
             try {
                 if (component.equals(ket6) || component.equals(ket7) || component.equals(ket8) || component.equals(ket9)) {
+                    SanYing.ToggleStatus old = status.copy();
                     value = new HandlerData(new float[]{ket6.getPollData(), ket7.getPollData(), ket8.getPollData(), ket9.getPollData()}).getValue();
                     if (status.setLevel(value))
-                        eventBus.post(new ToggleEvent.HandlerEvent(status, ToggleEvent.Comp.Handler, this));
+                        eventBus.post(new ToggleEvent.HandlerEvent(status, old, ToggleEvent.Comp.Handler, this));
                 }
             } catch (Exception e) {
                 System.out.println("From Handler Update");
@@ -184,18 +186,19 @@ public class Component {
                 this.buttonStatus = ButtonStatus.Released;
             }
 
+            SanYing.ToggleStatus old = status.copy();
             switch (type) {
                 case ATS:
                     status.setAts(buttonStatus.value);
-                    eventBus.post(new ToggleEvent.ButtonEvent.ATSConfirmedEvent(status, ToggleEvent.Comp.Button, this));
+                    eventBus.post(new ToggleEvent.ButtonEvent.ATSConfirmedEvent(status, old, ToggleEvent.Comp.Button, this));
                     break;
                 case CONST:
                     status.setConstSpeed(buttonStatus.value);
-                    eventBus.post(new ToggleEvent.ButtonEvent.ConstSpeedEvent(status, ToggleEvent.Comp.Button, this));
+                    eventBus.post(new ToggleEvent.ButtonEvent.ConstSpeedEvent(status, old, ToggleEvent.Comp.Button, this));
                     break;
                 case HORN:
                     status.setHorn(buttonStatus.value);
-                    eventBus.post(new ToggleEvent.ButtonEvent.HornEvent(status, ToggleEvent.Comp.Button, this));
+                    eventBus.post(new ToggleEvent.ButtonEvent.HornEvent(status, old, ToggleEvent.Comp.Button, this));
                     break;
             }
         }
@@ -207,20 +210,21 @@ public class Component {
                 this.buttonStatus = ButtonStatus.Released;
             }
 
+            SanYing.ToggleStatus old = status.copy();
             switch (type) {
                 case ATS:
                     status.setAts(buttonStatus.value);
                     if (buttonStatus.value) {
-                        eventBus.post(new ToggleEvent.ButtonEvent.ATSConfirmedEvent(status, ToggleEvent.Comp.Button, this));
+                        eventBus.post(new ToggleEvent.ButtonEvent.ATSConfirmedEvent(status, old, ToggleEvent.Comp.Button, this));
                     }
                     break;
                 case CONST:
                     if (status.setConstSpeed(buttonStatus.value))
-                        eventBus.post(new ToggleEvent.ButtonEvent.ConstSpeedEvent(status, ToggleEvent.Comp.Button, this));
+                        eventBus.post(new ToggleEvent.ButtonEvent.ConstSpeedEvent(status, old,  ToggleEvent.Comp.Button, this));
                     break;
                 case HORN:
                     status.setHorn(buttonStatus.value);
-                    eventBus.post(new ToggleEvent.ButtonEvent.HornEvent(status, ToggleEvent.Comp.Button, this));
+                    eventBus.post(new ToggleEvent.ButtonEvent.HornEvent(status,  old, ToggleEvent.Comp.Button, this));
                     break;
             }
         }
@@ -249,14 +253,16 @@ public class Component {
         public Switch(SanYing.ToggleStatus status, net.java.games.input.Component component) {
             super(status, component);
             direction = SanYing.ToggleStatus.Direction.getDirector(component.getPollData());
+            SanYing.ToggleStatus old = status.copy();
             status.setDirection(direction);
-            eventBus.post(new ToggleEvent.SwitchEvent(status, ToggleEvent.Comp.Switch, this));
+            eventBus.post(new ToggleEvent.SwitchEvent(status, old, ToggleEvent.Comp.Switch, this));
         }
 
         public void on(float value) {
             direction = SanYing.ToggleStatus.Direction.getDirector(value);
+            SanYing.ToggleStatus old = status.copy();
             status.setDirection(direction);
-            eventBus.post(new ToggleEvent.SwitchEvent(status, ToggleEvent.Comp.Switch, this));
+            eventBus.post(new ToggleEvent.SwitchEvent(status, old, ToggleEvent.Comp.Switch, this));
         }
     }
 }
