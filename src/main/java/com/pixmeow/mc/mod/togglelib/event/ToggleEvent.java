@@ -1,6 +1,6 @@
 package com.pixmeow.mc.mod.togglelib.event;
 
-import com.pixmeow.mc.mod.togglelib.Component;
+import com.pixmeow.mc.mod.togglelib.utils.Component;
 import com.pixmeow.mc.mod.togglelib.brand.SanYing;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 import net.minecraftforge.fml.common.eventhandler.Event;

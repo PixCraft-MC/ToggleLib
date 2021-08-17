@@ -1,5 +1,6 @@
-package com.pixmeow.mc.mod.togglelib;
+package com.pixmeow.mc.mod.togglelib.utils;
 
+import com.pixmeow.mc.mod.togglelib.ToggleLib;
 import com.pixmeow.mc.mod.togglelib.brand.SanYing;
 import com.pixmeow.mc.mod.togglelib.event.ToggleEvent;
 import net.minecraftforge.fml.common.eventhandler.EventBus;

@@ -1,4 +1,4 @@
-package com.pixmeow.mc.mod.togglelib.protocol;
+package com.pixmeow.mc.mod.togglelib.toggle;
 
 import com.pixmeow.mc.mod.togglelib.Logger;
 import com.pixmeow.mc.mod.togglelib.brand.SanYing;

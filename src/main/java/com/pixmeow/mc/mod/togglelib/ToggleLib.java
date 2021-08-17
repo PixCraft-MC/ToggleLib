@@ -1,5 +1,6 @@
 package com.pixmeow.mc.mod.togglelib;
 
+import com.pixmeow.mc.mod.togglelib.api.API;
 import com.pixmeow.mc.mod.togglelib.event.EventManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -26,6 +27,7 @@ public class ToggleLib {
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new EventManager(event));
         Toggle_EVENT_BUS.register(new EventManager(event));
+        API.init();
     }
 
     @Mod.EventHandler

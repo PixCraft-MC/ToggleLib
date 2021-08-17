@@ -5,5 +5,5 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public interface ToggleSupported {
     @SubscribeEvent
-    public void OnReceiveInput(ToggleEvent event);
+    void OnReceiveInput(ToggleEvent event);
 }

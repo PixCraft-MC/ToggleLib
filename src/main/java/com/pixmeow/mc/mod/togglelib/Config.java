@@ -18,7 +18,6 @@ public class Config {
     }
 
     public static void save(){
-
         config.save();
     }
 
@@ -42,6 +41,7 @@ public class Config {
         public int getVersion() {
             if (DOC_VERSION != version){
                 // version checker
+                Logger.Warning("Mismatched Configuration version", "Config Loader");
             }
             return version;
         }

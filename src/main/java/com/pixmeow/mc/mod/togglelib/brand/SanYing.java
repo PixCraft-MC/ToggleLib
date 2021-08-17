@@ -1,8 +1,8 @@
 package com.pixmeow.mc.mod.togglelib.brand;
 
-import com.pixmeow.mc.mod.togglelib.Component.Button;
-import com.pixmeow.mc.mod.togglelib.Component.Handler;
-import com.pixmeow.mc.mod.togglelib.Component.Switch;
+import com.pixmeow.mc.mod.togglelib.utils.Component.Button;
+import com.pixmeow.mc.mod.togglelib.utils.Component.Handler;
+import com.pixmeow.mc.mod.togglelib.utils.Component.Switch;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
 import net.java.games.input.Event;
@@ -16,7 +16,7 @@ public class SanYing {
     public static String name = "San Ying Controller";
     public static int version = 1;
     public static String author = "PixMeow";
-    public static Map<Component, com.pixmeow.mc.mod.togglelib.Component> componentMap = new LinkedHashMap<>();
+    public static Map<Component, com.pixmeow.mc.mod.togglelib.utils.Component> componentMap = new LinkedHashMap<>();
     public static Component btnHorn;
     public static Component btnConstSpeed;
     public static Component btnAtsConfirm;
@@ -25,6 +25,8 @@ public class SanYing {
     static Handler handler = new Handler(status);
 
     public static void init(@NotNull Controller controller) {
+        // todo need check the status of the toggle input plug-in
+
         Handler.HandlerData.init();
         for (Component component : controller.getComponents()) {
             switch (component.getIdentifier().getName()) {
@@ -110,7 +112,7 @@ public class SanYing {
             return false;
         }
 
-        public boolean setLevel(com.pixmeow.mc.mod.togglelib.Component.Handler.HandlerValue v) {
+        public boolean setLevel(com.pixmeow.mc.mod.togglelib.utils.Component.Handler.HandlerValue v) {
             if (v.value != ToggleLevel.Unknown.value && this.level.value != v.value) {
                 this.level = ToggleLevel.getLevel(v.value);
                 ToggleStatus.current = this;
@@ -241,7 +243,7 @@ public class SanYing {
                 return Unknown;
             }
 
-            public static ToggleLevel getLevel(com.pixmeow.mc.mod.togglelib.Component.Handler.HandlerValue value) {
+            public static ToggleLevel getLevel(com.pixmeow.mc.mod.togglelib.utils.Component.Handler.HandlerValue value) {
                 for (ToggleLevel i : ToggleLevel.values()) {
                     if (i.value == value.value) return i;
                 }
