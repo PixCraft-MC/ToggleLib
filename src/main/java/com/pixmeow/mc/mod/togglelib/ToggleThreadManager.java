@@ -9,12 +9,14 @@ public class ToggleThreadManager {
     private static boolean isToggleEnabled = false;
 
     public static void start() {
-        if (t == null){
-            t = new SanYing(null);
-            t.start();
-        }else if (!t.isAlive()){
-            t.stop();
-            t.start();
+        if (isToggleEnabled){
+            if (t == null){
+                t = new SanYing(null);
+                t.start();
+            }else if (!t.isAlive()){
+                t.stop();
+                t.start();
+            }
         }
     }
 

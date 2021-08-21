@@ -83,7 +83,7 @@ public class EventManager {
     }
 
     @SubscribeEvent
-    public void onEnterWorld(WorldEvent.Unload event) {
+    public void onQuitWorld(WorldEvent.Unload event) {
         ToggleThreadManager.stop();
     }
 }
